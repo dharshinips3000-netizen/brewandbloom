@@ -1,0 +1,2000 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Brew & Bloom | Cozy Cafe</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<style>
+
+/* =====================
+   GENERAL
+===================== */
+
+:root {
+    --cream: #fff9f0;
+    --brown: #5c3825;
+    --dark: #2d1c13;
+    --coffee: #8b5e3c;
+    --gold: #d9a45b;
+    --light: #f3e6d6;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+}
+
+section {
+    scroll-margin-top: 80px;
+}
+
+.section-padding {
+    padding: 100px 0;
+}
+
+/* =====================
+   NAVBAR
+===================== */
+
+.navbar {
+    background: rgba(255,249,240,0.97);
+    padding: 15px 0;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+    backdrop-filter: blur(10px);
+}
+
+.navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+    font-weight: 700;
+    color: var(--brown);
+}
+
+.navbar-brand i {
+    color: var(--gold);
+}
+
+.nav-link {
+    color: var(--dark);
+    font-size: 14px;
+    margin: 0 8px;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--gold);
+}
+
+.cart-btn {
+    background: var(--brown);
+    color: white;
+    border-radius: 30px;
+    padding: 10px 20px;
+    transition: 0.3s;
+}
+
+.cart-btn:hover {
+    background: var(--gold);
+    color: var(--dark);
+    transform: scale(1.05);
+}
+
+#cart-count {
+    background: var(--gold);
+    color: var(--dark);
+    border-radius: 50%;
+    padding: 2px 7px;
+    margin-left: 5px;
+}
+
+/* =====================
+   HOME
+===================== */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 140px 0 80px;
+    background:
+        radial-gradient(circle at 10% 20%, #f4e4ce 0%, transparent 35%),
+        var(--cream);
+}
+
+.hero-tag {
+    display: inline-block;
+    background: #f0dfca;
+    color: var(--brown);
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 5vw, 68px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.hero h1 span {
+    color: var(--coffee);
+}
+
+.hero p {
+    color: #766457;
+    line-height: 1.9;
+    max-width: 500px;
+    margin-bottom: 30px;
+}
+
+.primary-btn {
+    background: var(--brown);
+    color: white;
+    border: 2px solid var(--brown);
+    padding: 13px 28px;
+    border-radius: 30px;
+    transition: 0.3s;
+}
+
+.primary-btn:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--dark);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(139,94,60,0.2);
+}
+
+.secondary-btn {
+    color: var(--brown);
+    border: 2px solid var(--brown);
+    padding: 13px 28px;
+    border-radius: 30px;
+    margin-left: 10px;
+    transition: 0.3s;
+}
+
+.secondary-btn:hover {
+    background: var(--brown);
+    color: white;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 35px;
+    margin-top: 45px;
+}
+
+.hero-stats h4 {
+    font-size: 23px;
+    color: var(--brown);
+    margin-bottom: 5px;
+}
+
+.hero-stats small {
+    color: #8c7868;
+    font-size: 11px;
+}
+
+.hero-image {
+    position: relative;
+    padding: 20px;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    border-radius: 180px 180px 20px 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+    animation: floatImage 5s ease-in-out infinite;
+}
+
+.floating-card {
+    position: absolute;
+    bottom: 50px;
+    left: -10px;
+    background: white;
+    padding: 18px 25px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: popUp 1s ease;
+}
+
+.floating-card i {
+    color: var(--gold);
+    font-size: 25px;
+}
+
+.floating-card strong,
+.floating-card small {
+    display: block;
+}
+
+.floating-card small {
+    color: #999;
+    font-size: 12px;
+}
+
+/* =====================
+   HEADINGS
+===================== */
+
+.section-label {
+    color: var(--gold);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+.section-heading h2,
+.about-content h2 {
+    font-size: 42px;
+    color: var(--brown);
+    margin: 15px 0;
+}
+
+.section-heading p {
+    color: #8c7868;
+}
+
+/* =====================
+   ABOUT
+===================== */
+
+.about-image img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 15px 15px 0 var(--light);
+}
+
+.about-content {
+    padding: 30px 40px;
+}
+
+.about-content p {
+    color: #766457;
+    line-height: 1.9;
+    margin-bottom: 20px;
+}
+
+/* =====================
+   SERVICES
+===================== */
+
+.services-section {
+    background: #f3e8da;
+}
+
+.service-card {
+    background: var(--cream);
+    padding: 40px 30px;
+    text-align: center;
+    border-radius: 20px;
+    height: 100%;
+    transition: 0.4s;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+}
+
+.service-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.service-card i {
+    font-size: 38px;
+    color: var(--gold);
+    margin-bottom: 25px;
+    transition: 0.3s;
+}
+
+.service-card:hover i {
+    transform: scale(1.2) rotate(-8deg);
+}
+
+.service-card h4 {
+    color: var(--brown);
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    color: #8c7868;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* =====================
+   MENU
+===================== */
+
+.menu-filters {
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    border: 1px solid #d8c4ad;
+    background: transparent;
+    color: var(--brown);
+    padding: 10px 25px;
+    border-radius: 30px;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--brown);
+    color: white;
+    border-color: var(--brown);
+}
+
+.menu-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    height: 100%;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    transition: 0.4s;
+}
+
+.menu-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.menu-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.menu-card:hover img {
+    transform: scale(1.06);
+}
+
+.menu-info {
+    padding: 25px;
+}
+
+.category {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.menu-info h4 {
+    color: var(--brown);
+    margin: 10px 0;
+    font-size: 22px;
+}
+
+.menu-info p {
+    color: #8c7868;
+    font-size: 13px;
+    min-height: 40px;
+}
+
+.menu-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.menu-bottom strong {
+    font-size: 22px;
+    color: var(--brown);
+}
+
+.add-btn {
+    background: var(--light);
+    border: none;
+    color: var(--brown);
+    padding: 10px 18px;
+    border-radius: 25px;
+    transition: 0.3s;
+}
+
+.add-btn:hover {
+    background: var(--brown);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* =====================
+   TESTIMONIALS
+===================== */
+
+.testimonials-section {
+    background: #f3e8da;
+}
+
+.testimonial-card {
+    background: var(--cream);
+    padding: 35px;
+    border-radius: 20px;
+    height: 100%;
+    transition: 0.3s;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-8px);
+}
+
+.stars {
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.testimonial-card p {
+    color: #766457;
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 25px;
+}
+
+.testimonial-card h5 {
+    color: var(--brown);
+    margin-bottom: 5px;
+}
+
+.testimonial-card small {
+    color: #a18c78;
+}
+
+/* =====================
+   CONTACT
+===================== */
+
+.contact-info h3 {
+    color: var(--brown);
+    margin-bottom: 30px;
+}
+
+.contact-info p {
+    color: #766457;
+    margin-bottom: 25px;
+}
+
+.contact-info p i {
+    color: var(--gold);
+    width: 30px;
+    font-size: 18px;
+}
+
+.social-icons {
+    margin-top: 35px;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light);
+    color: var(--brown);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    background: var(--brown);
+    color: white;
+    transform: translateY(-5px);
+}
+
+.form-control,
+.form-select {
+    border: 1px solid #e0d1c0;
+    background: white;
+    padding: 13px 15px;
+    border-radius: 10px;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(217,164,91,0.15);
+}
+
+/* =====================
+   FOOTER
+===================== */
+
+.footer {
+    background: var(--dark);
+    color: white;
+    padding: 50px 0;
+}
+
+.footer h3 {
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+.footer p {
+    color: #d0bda9;
+}
+
+.footer small {
+    color: #a18c78;
+}
+
+/* =====================
+   CART AND MODALS
+===================== */
+
+.modal-content {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.modal-header {
+    background: var(--light);
+    border-bottom: none;
+}
+
+.modal-title {
+    color: var(--brown);
+    font-family: 'Playfair Display', serif;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item-info strong {
+    display: block;
+    color: var(--brown);
+}
+
+.cart-item-info small {
+    color: #888;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity-controls button {
+    border: none;
+    background: var(--light);
+    color: var(--brown);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+.remove-btn {
+    background: transparent !important;
+    color: #c0392b !important;
+}
+
+/* =====================
+   ANIMATIONS
+===================== */
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes floatImage {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes popUp {
+    0% {
+        opacity: 0;
+        transform: scale(0.7) translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.pop-animation {
+    animation: popUp 0.4s ease;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+
+@media (max-width: 991px) {
+
+    .hero {
+        padding-top: 130px;
+    }
+
+    .hero-image {
+        margin-top: 50px;
+    }
+
+    .about-content {
+        padding: 40px 15px;
+    }
+
+    .navbar-collapse {
+        background: var(--cream);
+        padding: 20px;
+        border-radius: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .section-padding {
+        padding: 70px 0;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .hero-stats {
+        gap: 18px;
+    }
+
+    .hero-stats h4 {
+        font-size: 18px;
+    }
+
+    .hero-stats small {
+        font-size: 9px;
+    }
+
+    .hero-image img {
+        height: 350px;
+    }
+
+    .floating-card {
+        left: 0;
+        bottom: 25px;
+    }
+
+    .section-heading h2,
+    .about-content h2 {
+        font-size: 32px;
+    }
+
+    .secondary-btn {
+        margin: 10px 0 0;
+    }
+
+    .menu-card img {
+        height: 200px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =====================
+     NAVBAR
+===================== -->
+
+<nav class="navbar navbar-expand-lg fixed-top">
+
+<div class="container">
+
+<a class="navbar-brand" href="#home">
+<i class="fas fa-mug-hot"></i> Brew & Bloom
+</a>
+
+<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+<span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarMenu">
+
+<ul class="navbar-nav ms-auto align-items-lg-center">
+
+<li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+<li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+<li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+<li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
+<li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+
+<li class="nav-item ms-lg-3">
+<button class="btn cart-btn" onclick="openCart()">
+<i class="fas fa-shopping-bag"></i>
+Cart <span id="cart-count">0</span>
+</button>
+</li>
+
+</ul>
+
+</div>
+</div>
+</nav>
+
+
+<!-- =====================
+     HOME
+===================== -->
+
+<section id="home" class="hero">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-6 hero-content fade-in">
+
+<span class="hero-tag">
+<i class="fas fa-heart"></i> Your daily dose of happiness
+</span>
+
+<h1>
+Life begins<br>
+with a cup of <span>coffee.</span>
+</h1>
+
+<p>
+Freshly brewed coffee, delicious bites, and cozy moments.
+Welcome to your happy place.
+</p>
+
+<div class="hero-buttons">
+
+<a href="#menu" class="btn primary-btn">Explore Menu</a>
+
+<a href="#about" class="btn secondary-btn">Discover Us</a>
+
+</div>
+
+<div class="hero-stats">
+
+<div>
+<h4>4.9/5</h4>
+<small>Customer Rating</small>
+</div>
+
+<div>
+<h4>100%</h4>
+<small>Freshly Brewed</small>
+</div>
+
+<div>
+<h4>₹99</h4>
+<small>Starting Price</small>
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-6 hero-image fade-in">
+
+<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=85" alt="Fresh coffee">
+
+<div class="floating-card">
+
+<i class="fas fa-star"></i>
+
+<div>
+<strong>Made with love</strong>
+<small>Every single cup</small>
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- =====================
+     ABOUT
+===================== -->
+
+<section id="about" class="section-padding">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-6 about-image fade-in">
+
+<img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=900&q=85" alt="Cafe coffee">
+
+</div>
+
+<div class="col-lg-6 about-content fade-in">
+
+<span class="section-label">OUR STORY</span>
+
+<h2>A little coffee.<br>A lot of love.</h2>
+
+<p>
+Brew & Bloom is more than just a cafe.
+It is a little corner of happiness where conversations flow,
+ideas bloom, and every cup tells a story.
+</p>
+
+<p>
+We believe in freshly prepared food, quality ingredients,
+and making every customer feel at home.
+</p>
+
+<a href="#menu" class="btn primary-btn">Taste the Happiness</a>
+
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- =====================
+     SERVICES
+===================== -->
+
+<section id="services" class="section-padding services-section">
+
+<div class="container">
+
+<div class="section-heading text-center fade-in">
+
+<span class="section-label">WHAT WE OFFER</span>
+
+<h2>Made for your moments</h2>
+
+<p>Good coffee, great company, and memorable experiences.</p>
+
+</div>
+
+<div class="row g-4 mt-4">
+
+<div class="col-md-4 fade-in">
+
+<div class="service-card">
+
+<i class="fas fa-coffee"></i>
+
+<h4>Fresh Coffee</h4>
+
+<p>Handcrafted coffee made from freshly roasted beans.</p>
+
+</div>
+</div>
+
+<div class="col-md-4 fade-in">
+
+<div class="service-card">
+
+<i class="fas fa-bread-slice"></i>
+
+<h4>Fresh Bakery</h4>
+
+<p>Delicious pastries, cakes, and freshly baked treats.</p>
+
+</div>
+</div>
+
+<div class="col-md-4 fade-in">
+
+<div class="service-card">
+
+<i class="fas fa-laptop"></i>
+
+<h4>Work & Relax</h4>
+
+<p>A cozy space for studying, working, and catching up.</p>
+
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- =====================
+     MENU
+===================== -->
+
+<section id="menu" class="section-padding">
+
+<div class="container">
+
+<div class="section-heading text-center fade-in">
+
+<span class="section-label">OUR MENU</span>
+
+<h2>Something delicious for you</h2>
+
+<p>Explore our freshly prepared favorites.</p>
+
+</div>
+
+
+<!-- MENU FILTERS -->
+
+<div class="menu-filters text-center mt-4">
+
+<button class="filter-btn active" data-filter="all">All</button>
+
+<button class="filter-btn" data-filter="coffee">Coffee</button>
+
+<button class="filter-btn" data-filter="food">Food</button>
+
+<button class="filter-btn" data-filter="dessert">Desserts</button>
+
+</div>
+
+
+<div class="row g-4 mt-3">
+
+
+<!-- CAPPUCCINO -->
+
+<div class="col-md-6 col-lg-4 menu-item coffee fade-in">
+
+<div class="menu-card">
+
+<img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=80" alt="Cappuccino">
+
+<div class="menu-info">
+
+<span class="category">COFFEE</span>
+
+<h4>Cappuccino</h4>
+
+<p>Espresso with creamy steamed milk.</p>
+
+<div class="menu-bottom">
+
+<strong>₹149</strong>
+
+<button class="add-btn" onclick="addToCart('Cappuccino',149)">
+<i class="fas fa-plus"></i> Add
+</button>
+
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- LATTE -->
+
+<div class="col-md-6 col-lg-4 menu-item coffee fade-in">
+
+<div class="menu-card">
+
+<img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=700&q=80" alt="Caramel Latte">
+
+<div class="menu-info">
+
+<span class="category">COFFEE</span>
+
+<h4>Caramel Latte</h4>
+
+<p>Espresso, milk, and sweet caramel.</p>
+
+<div class="menu-bottom">
+
+<strong>₹179</strong>
+
+<button class="add-btn" onclick="addToCart('Caramel Latte',179)">
+<i class="fas fa-plus"></i> Add
+</button>
+
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- COLD COFFEE -->
+
+<div class="col-md-6 col-lg-4 menu-item coffee fade-in">
+
+<div class="menu-card">
+
+<img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=700&q=80" alt="Cold Coffee">
+
+<div class="menu-info">
+
+<span class="category">COFFEE</span>
+
+<h4>Cold Coffee</h4>
+
+<p>Chilled coffee blended with creamy milk.</p>
+
+<div class="menu-bottom">
+
+<strong>₹159</strong>
+
+<button class="add-btn" onclick="addToCart('Cold Coffee',159)">
+<i class="fas fa-plus"></i> Add
+</button>
+
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- SANDWICH -->
+
+<div class="col-md-6 col-lg-4 menu-item food fade-in">
+
+<div class="menu-card">
+
+<img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=700&q=80" alt="Grilled Sandwich">
+
+<div class="menu-info">
+
+<span class="category">FOOD</span>
+
+<h4>Grilled Sandwich</h4>
+
+<p>Toasted sandwich with cheese and vegetables.</p>
+
+<div class="menu-bottom">
+
+<strong>₹189</strong>
+
+<button class="add-btn" onclick="addToCart('Grilled Sandwich',189)">
+<i class="fas fa-plus"></i> Add
+</button>
+
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- PASTA -->
+
+<div class="col-md-6 col-lg-4 menu-item food fade-in">
+
+<div class="menu-card">
+
+<img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=700&q=80" alt="Creamy Pasta">
+
+<div class="menu-info">
+
+<span class="category">FOOD</span>
+
+<h4>Creamy Pasta</h4>
+
+<p>Rich, creamy pasta with herbs and cheese.</p>
+
+<div class="menu-bottom">
+
+<strong>₹249</strong>
+
+<button class="add-btn" onclick="addToCart('Creamy Pasta',249)">
+<i class="fas fa-plus"></i> Add
+</button>
+
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- CAKE -->
+
+<div class="col-md-6 col-lg-4 menu-item dessert fade-in">
+
+<div class="menu-card">
+
+<img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80" alt="Chocolate Cake">
+
+<div class="menu-info">
+
+<span class="category">DESSERT</span>
+
+<h4>Chocolate Cake</h4>
+
+<p>Soft chocolate cake with rich ganache.</p>
+
+<div class="menu-bottom">
+
+<strong>₹199</strong>
+
+<button class="add-btn" onclick="addToCart('Chocolate Cake',199)">
+<i class="fas fa-plus"></i> Add
+</button>
+
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+</div>
+</section>
+
+
+<!-- =====================
+     TESTIMONIALS
+===================== -->
+
+<section id="testimonials" class="section-padding testimonials-section">
+
+<div class="container">
+
+<div class="section-heading text-center fade-in">
+
+<span class="section-label">HAPPY CUSTOMERS</span>
+
+<h2>Love served in every cup</h2>
+
+</div>
+
+<div class="row g-4 mt-4">
+
+
+<div class="col-md-4 fade-in">
+
+<div class="testimonial-card">
+
+<div class="stars">★★★★★</div>
+
+<p>
+"The coffee is amazing and the atmosphere is so peaceful.
+My favorite place to relax!"
+</p>
+
+<h5>Hemeena</h5>
+
+<small>Regular Customer</small>
+
+</div>
+</div>
+
+
+<div class="col-md-4 fade-in">
+
+<div class="testimonial-card">
+
+<div class="stars">★★★★★</div>
+
+<p>
+"Loved the caramel latte and chocolate cake.
+Everything was fresh and delicious."
+</p>
+
+<h5>Kavya</h5>
+
+<small>Coffee Lover</small>
+
+</div>
+</div>
+
+
+<div class="col-md-4 fade-in">
+
+<div class="testimonial-card">
+
+<div class="stars">★★★★★</div>
+
+<p>
+"A beautiful cozy cafe with friendly service.
+Perfect for working and catching up."
+</p>
+
+<h5>Charukesh</h5>
+
+<small>Happy Guest</small>
+
+</div>
+</div>
+
+
+</div>
+</div>
+</section>
+
+
+<!-- =====================
+     CONTACT
+===================== -->
+
+<section id="contact" class="section-padding">
+
+<div class="container">
+
+<div class="section-heading text-center fade-in">
+
+<span class="section-label">GET IN TOUCH</span>
+
+<h2>We would love to hear from you</h2>
+
+</div>
+
+<div class="row g-5 mt-4">
+
+
+<div class="col-lg-5 contact-info fade-in">
+
+<h3>Visit our cafe</h3>
+
+<p>
+<i class="fas fa-map-marker-alt"></i>
+Chennai, Tamil Nadu, India
+</p>
+
+<p>
+<i class="fas fa-phone"></i>
++91 7904283526
+</p>
+
+<p>
+<i class="fas fa-envelope"></i>
+hello@brewandbloom.com
+</p>
+
+<p>
+<i class="fas fa-clock"></i>
+Mon - Sun: 9:00 AM - 10:00 PM
+</p>
+
+<div class="social-icons">
+
+<a href="#"><i class="fab fa-instagram"></i></a>
+
+<a href="#"><i class="fab fa-facebook"></i></a>
+
+<a href="#"><i class="fab fa-pinterest"></i></a>
+
+</div>
+
+</div>
+
+
+<div class="col-lg-7 fade-in">
+
+<form id="contact-form">
+
+<div class="row g-3">
+
+<div class="col-md-6">
+<input type="text" class="form-control" placeholder="Your Name" required>
+</div>
+
+<div class="col-md-6">
+<input type="email" class="form-control" placeholder="Your Email" required>
+</div>
+
+<div class="col-12">
+<input type="text" class="form-control" placeholder="Subject" required>
+</div>
+
+<div class="col-12">
+<textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+</div>
+
+<div class="col-12">
+<button type="submit" class="btn primary-btn">Send Message</button>
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- =====================
+     FOOTER
+===================== -->
+
+<footer class="footer">
+
+<div class="container text-center">
+
+<h3><i class="fas fa-mug-hot"></i> Brew & Bloom</h3>
+
+<p>Brewing happiness, one cup at a time.</p>
+
+<small>© 2026 Brew & Bloom Cafe. All rights reserved.</small>
+
+</div>
+
+</footer>
+
+
+<!-- =====================
+     CART MODAL
+===================== -->
+
+<div class="modal fade" id="cartModal" tabindex="-1">
+
+<div class="modal-dialog modal-dialog-centered">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h5 class="modal-title">Your Shopping Cart</h5>
+
+<button class="btn-close" data-bs-dismiss="modal"></button>
+
+</div>
+
+<div class="modal-body">
+
+<div id="cart-items">Your cart is empty.</div>
+
+<hr>
+
+<h5 class="text-end">
+Total: ₹<span id="cart-total">0</span>
+</h5>
+
+<button class="btn primary-btn w-100 mt-3" onclick="checkout()">
+Proceed to Checkout
+</button>
+
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- =====================
+     CHECKOUT MODAL
+===================== -->
+
+<div class="modal fade" id="checkoutModal" tabindex="-1">
+
+<div class="modal-dialog modal-dialog-centered">
+
+<div class="modal-content">
+
+<div class="modal-header">
+
+<h5 class="modal-title">Place Your Order</h5>
+
+<button class="btn-close" data-bs-dismiss="modal"></button>
+
+</div>
+
+<div class="modal-body">
+
+<form id="checkout-form">
+
+<label class="form-label">Full Name</label>
+
+<input type="text" id="customer-name" class="form-control mb-3" required>
+
+<label class="form-label">Phone Number</label>
+
+<input type="tel" id="customer-phone" class="form-control mb-3" pattern="[0-9]{10}" maxlength="10" required>
+
+<label class="form-label">Order Type</label>
+
+<select id="order-type" class="form-select mb-3">
+
+<option value="Pickup">Pickup</option>
+
+<option value="Delivery">Delivery</option>
+
+</select>
+
+
+<div id="address-field" style="display:none;">
+
+<label class="form-label">Delivery Address</label>
+
+<textarea id="customer-address" class="form-control mb-3"></textarea>
+
+</div>
+
+
+<label class="form-label">Payment Method</label>
+
+<select id="payment-method" class="form-select mb-3">
+
+<option value="Cash on Delivery">Cash on Delivery</option>
+
+<option value="UPI">UPI (Demo)</option>
+
+<option value="Pay at Cafe">Pay at Cafe</option>
+
+</select>
+
+
+<button type="submit" class="btn primary-btn w-100">
+Confirm Order
+</button>
+
+</form>
+
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- =====================
+     TOAST
+===================== -->
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+
+<div id="successToast" class="toast">
+
+<div class="toast-header">
+
+<strong class="me-auto">Brew & Bloom</strong>
+
+<button class="btn-close" data-bs-dismiss="toast"></button>
+
+</div>
+
+<div class="toast-body" id="toast-message">
+Thank you!
+</div>
+
+</div>
+</div>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+
+/* =====================
+   SHOPPING CART
+===================== */
+
+let cart = [];
+
+
+/* =====================
+   JQUERY
+===================== */
+
+$(document).ready(function () {
+
+    // Fade-in animation on scroll
+
+    function revealElements() {
+
+        $(".fade-in").each(function () {
+
+            let elementTop = $(this).offset().top;
+
+            let windowBottom =
+                $(window).scrollTop() + $(window).height();
+
+            if (elementTop < windowBottom - 50) {
+
+                $(this).addClass("visible");
+
+            }
+
+        });
+
+    }
+
+    revealElements();
+
+    $(window).on("scroll", function () {
+
+        revealElements();
+
+    });
+
+
+    // Menu category filter
+
+    $(".filter-btn").click(function () {
+
+        let filter = $(this).attr("data-filter");
+
+        $(".filter-btn").removeClass("active");
+
+        $(this).addClass("active");
+
+        if (filter === "all") {
+
+            $(".menu-item").fadeIn(400);
+
+        } else {
+
+            $(".menu-item").hide();
+
+            $(".menu-item." + filter).fadeIn(400);
+
+        }
+
+    });
+
+
+    // Contact form
+
+    $("#contact-form").submit(function (event) {
+
+        event.preventDefault();
+
+        showToast("Thank you! Your message has been received.");
+
+        this.reset();
+
+    });
+
+
+    // Delivery address
+
+    $("#order-type").change(function () {
+
+        if ($(this).val() === "Delivery") {
+
+            $("#address-field").slideDown(300);
+
+            $("#customer-address").prop("required", true);
+
+        } else {
+
+            $("#address-field").slideUp(300);
+
+            $("#customer-address").prop("required", false);
+
+        }
+
+    });
+
+
+    // Close mobile navbar after clicking a link
+
+    $(".nav-link").click(function () {
+
+        $(".navbar-collapse").collapse("hide");
+
+    });
+
+});
+
+
+/* =====================
+   ADD TO CART
+===================== */
+
+function addToCart(name, price) {
+
+    let existingItem = cart.find(item => item.name === name);
+
+    if (existingItem) {
+
+        existingItem.quantity++;
+
+    } else {
+
+        cart.push({
+
+            name: name,
+
+            price: price,
+
+            quantity: 1
+
+        });
+
+    }
+
+    updateCart();
+
+    showToast(name + " added to your cart!");
+
+}
+
+
+/* =====================
+   UPDATE CART
+===================== */
+
+function updateCart() {
+
+    let totalItems = 0;
+
+    let totalPrice = 0;
+
+    let cartHTML = "";
+
+    cart.forEach(function (item, index) {
+
+        totalItems += item.quantity;
+
+        let itemTotal = item.price * item.quantity;
+
+        totalPrice += itemTotal;
+
+        cartHTML += `
+
+            <div class="cart-item pop-animation">
+
+                <div class="cart-item-info">
+
+                    <strong>${item.name}</strong>
+
+                    <small>
+                        ₹${item.price} × ${item.quantity}
+                        = ₹${itemTotal}
+                    </small>
+
+                </div>
+
+                <div class="quantity-controls">
+
+                    <button onclick="changeQuantity(${index}, -1)">-</button>
+
+                    <span>${item.quantity}</span>
+
+                    <button onclick="changeQuantity(${index}, 1)">+</button>
+
+                    <button class="remove-btn" onclick="removeItem(${index})">
+
+                        <i class="fas fa-trash"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+
+    if (cart.length === 0) {
+
+        cartHTML = `
+
+            <div class="text-center py-4">
+
+                <i class="fas fa-shopping-bag fa-2x mb-3"
+                   style="color:#d9a45b"></i>
+
+                <p>Your cart is empty.</p>
+
+                <small>Add something delicious from our menu!</small>
+
+            </div>
+
+        `;
+
+    }
+
+
+    $("#cart-items").html(cartHTML);
+
+    $("#cart-count").text(totalItems);
+
+    $("#cart-total").text(totalPrice);
+
+}
+
+
+/* =====================
+   CHANGE QUANTITY
+===================== */
+
+function changeQuantity(index, amount) {
+
+    cart[index].quantity += amount;
+
+    if (cart[index].quantity <= 0) {
+
+        cart.splice(index, 1);
+
+    }
+
+    updateCart();
+
+}
+
+
+/* =====================
+   REMOVE ITEM
+===================== */
+
+function removeItem(index) {
+
+    cart.splice(index, 1);
+
+    updateCart();
+
+    showToast("Item removed from cart.");
+
+}
+
+
+/* =====================
+   OPEN CART
+===================== */
+
+function openCart() {
+
+    updateCart();
+
+    let cartModal = new bootstrap.Modal(
+        document.getElementById("cartModal")
+    );
+
+    cartModal.show();
+
+}
+
+
+/* =====================
+   CHECKOUT
+===================== */
+
+function checkout() {
+
+    if (cart.length === 0) {
+
+        showToast("Your cart is empty!");
+
+        return;
+
+    }
+
+    let cartModalElement =
+        document.getElementById("cartModal");
+
+    let cartModal =
+        bootstrap.Modal.getInstance(cartModalElement);
+
+    if (cartModal) {
+
+        cartModal.hide();
+
+    }
+
+    let checkoutModal = new bootstrap.Modal(
+        document.getElementById("checkoutModal")
+    );
+
+    checkoutModal.show();
+
+}
+
+
+/* =====================
+   PLACE ORDER
+===================== */
+
+$("#checkout-form").submit(function (event) {
+
+    event.preventDefault();
+
+    if (cart.length === 0) {
+
+        showToast("Your cart is empty!");
+
+        return;
+
+    }
+
+    let customerName =
+        $("#customer-name").val();
+
+    let customerPhone =
+        $("#customer-phone").val();
+
+    let orderType =
+        $("#order-type").val();
+
+    let paymentMethod =
+        $("#payment-method").val();
+
+    let address =
+        $("#customer-address").val();
+
+
+    let totalPrice = cart.reduce(function (total, item) {
+
+        return total + (item.price * item.quantity);
+
+    }, 0);
+
+
+    let orderNumber =
+        Math.floor(100000 + Math.random() * 900000);
+
+
+    let orderSummary = cart.map(function (item) {
+
+        return `${item.name} x ${item.quantity}`;
+
+    }).join(", ");
+
+
+    let orderMessage = `
+
+        Hello Brew & Bloom!
+
+        I would like to place an order.
+
+        Order ID: ${orderNumber}
+
+        Name: ${customerName}
+
+        Phone: ${customerPhone}
+
+        Order Type: ${orderType}
+
+        ${orderType === "Delivery" ? "Address: " + address : ""}
+
+        Items: ${orderSummary}
+
+        Total: ₹${totalPrice}
+
+        Payment: ${paymentMethod}
+
+    `;
+
+
+    // Close checkout modal
+
+    let checkoutModalElement =
+        document.getElementById("checkoutModal");
+
+    let checkoutModal =
+        bootstrap.Modal.getInstance(checkoutModalElement);
+
+    if (checkoutModal) {
+
+        checkoutModal.hide();
+
+    }
+
+
+    // WhatsApp order
+
+    let whatsappNumber = "919876543210";
+
+    let whatsappURL =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(orderMessage);
+
+
+    showToast(
+        "Order #" + orderNumber +
+        " placed successfully! Total: ₹" + totalPrice
+    );
+
+
+    // Clear cart
+
+    cart = [];
+
+    updateCart();
+
+    $("#checkout-form")[0].reset();
+
+    $("#address-field").hide();
+
+    $("#customer-address").prop("required", false);
+
+
+    // WhatsApp confirmation
+
+    setTimeout(function () {
+
+        let sendWhatsApp = confirm(
+            "Would you like to send your order details to the cafe through WhatsApp?"
+        );
+
+        if (sendWhatsApp) {
+
+            window.open(whatsappURL, "_blank");
+
+        }
+
+    }, 800);
+
+});
+
+
+/* =====================
+   TOAST MESSAGE
+===================== */
+
+function showToast(message) {
+
+    $("#toast-message").text(message);
+
+    let toastElement =
+        document.getElementById("successToast");
+
+    let toast = bootstrap.Toast.getOrCreateInstance(
+        toastElement,
+        {
+            delay: 3000
+        }
+    );
+
+    toast.show();
+
+}
+
+</script>
+
+</body>
+</html>
